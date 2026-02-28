@@ -1,0 +1,389 @@
+---
+import "@styles/global.css";
+---
+
+<main class="grow pt-20">
+  <!-- Hero Section -->
+  <section
+    class="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center px-4 md:px-10 lg:px-20 overflow-hidden"
+  >
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img
+        alt="Modern interior living room with warm lighting and wooden textures"
+        class="w-full h-full object-cover"
+        data-alt="Modern interior living room with warm lighting and wooden textures"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBts-fhNaT3yG12LFmZVhtnYn5_43a7Lnd7qerXhag9IXn5UQnzKYs5BOtb0hAyuzRrD-sZKd9zOzAvIZziRdX5_5AZyee9bp-Dv1JJ-sNEgIn8HEH6KyBBCHCWwOyH_R-3HN2GcGP0F66uR2qIJD_6BSFAIwoDfQnNL5o3pV1_Pu145RFt7CRNUPD_e4U9rMYpytkpW88203ZLe5KexapJn1XGGiEb-2lsYkoCPrXExeremknYQC0WlwGwsLDUpz7pQxusqNwpeQ"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-[#161212]/70 via-[#161212]/40 to-[#161212] z-10"
+      >
+      </div>
+    </div>
+    <div
+      class="relative z-20 flex flex-col items-center text-center max-w-4xl mx-auto space-y-8 animate-fade-in-up"
+    >
+      <span
+        class="inline-block px-3 py-1 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm text-xs font-bold uppercase tracking-widest text-white/80"
+      >
+        Est. 2018 — Nairobi &amp; London
+      </span>
+      <h1
+        class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
+      >
+        Spaces with <br /><span class="text-primary italic"
+          >Soul &amp; Story.</span
+        >
+      </h1>
+      <p
+        class="text-lg md:text-xl text-gray-200 max-w-2xl font-light leading-relaxed"
+      >
+        Where modern architecture meets the rich, organic textures of African
+        heritage. Designing sanctuaries that breathe culture and sophistication.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 pt-4">
+        <button
+          class="flex items-center justify-center rounded-lg bg-primary hover:bg-primary-dark transition-all h-12 px-8 text-white font-bold tracking-wide shadow-lg shadow-primary/20"
+        >
+          View Portfolio
+        </button>
+        <button
+          class="flex items-center justify-center rounded-lg border border-white/20 hover:bg-white/10 transition-all h-12 px-8 text-white font-medium tracking-wide backdrop-blur-sm"
+        >
+          Read Philosophy
+        </button>
+      </div>
+    </div>
+    <!-- Abstract decorative element -->
+    <div class="absolute bottom-10 left-10 hidden lg:block z-20">
+      <div class="flex gap-4 text-white/40">
+        <div class="h-16 w-[1px] bg-gradient-to-b from-primary to-transparent">
+        </div>
+        <div
+          class="flex flex-col justify-end text-xs uppercase tracking-widest font-mono"
+        >
+          <span>SCROLL</span>
+          <span>DOWN</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Philosophy Section -->
+  <section
+    class="py-24 px-4 md:px-10 lg:px-20 bg-background-dark relative overflow-hidden"
+    id="philosophy"
+  >
+    <!-- Background Pattern -->
+    <div
+      class="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none"
+    >
+      <svg
+        height="100%"
+        preserveAspectRatio="none"
+        viewBox="0 0 100 100"
+        width="100%"
+      >
+        <pattern
+          height="20"
+          id="tribal-pattern"
+          patternUnits="userSpaceOnUse"
+          width="20"
+          x="0"
+          y="0"
+        >
+          <path
+            class="text-white"
+            d="M0 20 L10 0 L20 20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="0.5"></path>
+        </pattern>
+        <rect fill="url(#tribal-pattern)" height="100%" width="100%" x="0" y="0"
+        ></rect>
+      </svg>
+    </div>
+    <div
+      class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+    >
+      <div class="space-y-8">
+        <h2 class="text-primary font-bold tracking-wider uppercase text-sm">
+          The Philosophy
+        </h2>
+        <h3
+          class="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-medium leading-tight"
+        >
+          Rooted in Tradition, <br />Designed for Today.
+        </h3>
+        <p class="text-gray-400 text-lg leading-relaxed">
+          My work explores the intersection of contemporary minimalism and the
+          rich, organic textures of African design. Every space tells a story of
+          origin and evolution, utilizing raw materials like clay, wood, and
+          woven fabrics alongside clean architectural lines.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+          <div
+            class="flex flex-col gap-3 p-5 rounded-xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform origin-left"
+              >spa</span
+            >
+            <h4 class="text-white font-bold text-lg">Organic Textures</h4>
+            <p class="text-gray-500 text-sm">
+              Raw materials that bring warmth and tactile depth to modern
+              spaces.
+            </p>
+          </div>
+          <div
+            class="flex flex-col gap-3 p-5 rounded-xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-colors group"
+          >
+            <span
+              class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform origin-left"
+              >globe_asia</span
+            >
+            <h4 class="text-white font-bold text-lg">Cultural Depth</h4>
+            <p class="text-gray-500 text-sm">
+              Incorporating traditional patterns in subtle, sophisticated ways.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="relative h-[600px] w-full rounded-2xl overflow-hidden group">
+        <img
+          alt="Minimalist room with clay pots and desert tones"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          data-alt="Minimalist room with clay pots and desert tones"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXVXwVwXFAmetjFTbCWKvSwhIgkKBKEJRLl8gDWsXvXHpAhJs6OI2NLhtsrbmE9Jm1PnmYxS2wZH4nAi56QbPod43kSdLGNNuaSz7fIatcWP-M08s1CJ---FCRVn9qIafts10OqRBJJZyOoMRYw5TjZL-RQtDRrpROEy2R8b1SzWEnzz4hsFhZYaEFQAtlF6g52YqnvPGOOhJ73aEXSNFwJzOrfuuCDl-u6TwwNcdCPFirYmRBR2xs83L6EUW7XQRzQNK7teNKAA"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-background-dark/80 via-transparent to-transparent"
+        >
+        </div>
+        <!-- Floating Quote Card -->
+        <div
+          class="absolute bottom-8 left-8 right-8 bg-surface-dark/90 backdrop-blur-md p-6 rounded-xl border-l-4 border-primary shadow-2xl"
+        >
+          <p class="font-serif italic text-white text-lg">
+            "Architecture should speak of its time and place, but yearn for
+            timelessness."
+          </p>
+          <p
+            class="mt-2 text-sm text-gray-400 font-bold uppercase tracking-widest"
+          >
+            — Clara M.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Featured Projects Section -->
+  <section class="py-24 px-4 md:px-10 lg:px-20 bg-[#120f0f]" id="work">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+      >
+        <div>
+          <h2
+            class="text-primary font-bold tracking-wider uppercase text-sm mb-3"
+          >
+            Selected Works
+          </h2>
+          <h3 class="font-serif text-4xl text-white font-medium">
+            Curated Spaces
+          </h3>
+        </div>
+        <a
+          class="group flex items-center gap-2 text-white hover:text-primary transition-colors pb-1 border-b border-white/20 hover:border-primary"
+          href="#"
+        >
+          <span class="font-medium">View All Projects</span>
+          <span
+            class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1"
+            >arrow_forward</span
+          >
+        </a>
+      </div>
+      <!-- Masonry-style Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="group cursor-pointer flex flex-col gap-4">
+          <div
+            class="relative h-[400px] rounded-xl overflow-hidden bg-surface-dark"
+          >
+            <img
+              alt="Luxury modern living room with large glass windows"
+              class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-80"
+              data-alt="Luxury modern living room with large glass windows"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMVZMfutbahJnP7uyMOh5JXa2Aim6YhkpgTwSfAOdw86QGJza04TJosvD_7Nne7MYgvpcUYEvkLeeqbgSWbvJXgnVBlcMArzz15SvzY4QFvLagfwCsgr_tOuhdaZQDfMV_iOzC-Vuvfzd7BR9bS4lzWAf9KLmsB9miYjhhe8uWc6EI7LPymCfrX3lG6hAm4HCBbZav6Fu0oSwXm-OjATHgh1FqmrHxZhuFzslsHhNELCOS5xEjYsls_esepKZUjHpQN7I4clPurw"
+            />
+            <div
+              class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider"
+            >
+              Residential
+            </div>
+          </div>
+          <div class="flex justify-between items-start">
+            <div>
+              <h4
+                class="text-xl font-bold text-white group-hover:text-primary transition-colors"
+              >
+                The Nairobi Loft
+              </h4>
+              <p class="text-sm text-gray-500 mt-1">Nairobi, Kenya</p>
+            </div>
+            <span
+              class="material-symbols-outlined text-gray-600 group-hover:text-primary transition-colors"
+              >north_east</span
+            >
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="group cursor-pointer flex flex-col gap-4 lg:translate-y-12">
+          <div
+            class="relative h-[500px] rounded-xl overflow-hidden bg-surface-dark"
+          >
+            <img
+              alt="Dark moody bedroom interior with wooden paneling"
+              class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-80"
+              data-alt="Dark moody bedroom interior with wooden paneling"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7YA_oow5LdgI_X65GufFp4VBvyGPsw2fBSrr78HaoMM554ovFpjj3r2xga_x_a7ga-OLzswzdjoNTnhxkOVBJl87fIoT0mqov9he-35YSiN89ehNTrvLycKB69PQeKVJl2xVANVjSNKOWfCPO4j3yXxJsbFdlQ9nn_E_Zcy1MaC45Z3J9a15-7eEbLebPGftuSF39u_kFuIG7JG36RgHRv9EXL6Te5FcsJU6-1oYqezwkPVO4LYcFSFxEVtMzxV0yaV9acaX_Kg"
+            />
+            <div
+              class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider"
+            >
+              Hospitality
+            </div>
+          </div>
+          <div class="flex justify-between items-start">
+            <div>
+              <h4
+                class="text-xl font-bold text-white group-hover:text-primary transition-colors"
+              >
+                Serengeti Lodge
+              </h4>
+              <p class="text-sm text-gray-500 mt-1">Tanzania</p>
+            </div>
+            <span
+              class="material-symbols-outlined text-gray-600 group-hover:text-primary transition-colors"
+              >north_east</span
+            >
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="group cursor-pointer flex flex-col gap-4">
+          <div
+            class="relative h-[400px] rounded-xl overflow-hidden bg-surface-dark"
+          >
+            <img
+              alt="Bright open kitchen with marble island"
+              class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-80"
+              data-alt="Bright open kitchen with marble island"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWq-A5OlLCZXvxvB_6AlQz1EmBEtR69YR25ymxrJ83L58IrHeSEM7eGqvm7pBymxLGplEtpQfxecNywVUoUgy7YgEyCIxPhOg8r9AOegpPt1fkIZm8F4Btevq8Nnpc41uitNZ2boTbcel0uz7I7eKIfztXDBVqTNiH2frWqWjkks7jDhWIOMlkGLMHuN19CrutqBNRRrM-6-byCkyJJhJ3DF8LXSSBCbbz06FDoGTD3LXxTyoGK1elCKx_dgCbbRUY-TJIE1XaZQ"
+            />
+            <div
+              class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider"
+            >
+              Residential
+            </div>
+          </div>
+          <div class="flex justify-between items-start">
+            <div>
+              <h4
+                class="text-xl font-bold text-white group-hover:text-primary transition-colors"
+              >
+                Cape Town Villa
+              </h4>
+              <p class="text-sm text-gray-500 mt-1">Cape Town, SA</p>
+            </div>
+            <span
+              class="material-symbols-outlined text-gray-600 group-hover:text-primary transition-colors"
+              >north_east</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonial / Impact Section -->
+  <section class="py-24 px-4 md:px-10 lg:px-20 bg-primary-dark/10 relative">
+    <div class="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+      <span class="material-symbols-outlined text-6xl text-primary opacity-50"
+        >format_quote</span
+      >
+      <h3 class="font-serif text-3xl md:text-5xl text-white leading-tight">
+        "Clara didn't just design a house; she curated a home that feels like a
+        piece of art. The blend of textures is simply masterful."
+      </h3>
+      <div class="flex items-center justify-center gap-4">
+        <div class="h-[1px] w-12 bg-white/20"></div>
+        <p class="text-white/80 font-medium tracking-wide uppercase text-sm">
+          Elena &amp; Marcus, Private Clients
+        </p>
+        <div class="h-[1px] w-12 bg-white/20"></div>
+      </div>
+    </div>
+  </section>
+  <!-- Contact CTA Section -->
+  <section
+    class="py-24 px-4 md:px-10 lg:px-20 bg-background-dark border-t border-white/5"
+    id="contact"
+  >
+    <div
+      class="max-w-5xl mx-auto bg-gradient-to-br from-primary via-[#4a191b] to-black rounded-3xl p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 shadow-2xl"
+    >
+      <div class="space-y-6 max-w-lg">
+        <h2
+          class="font-serif text-4xl md:text-5xl text-white font-bold leading-tight"
+        >
+          Let's Create Something Timeless.
+        </h2>
+        <p class="text-white/80 text-lg">
+          Ready to transform your space? Get in touch to discuss your vision and
+          how we can bring it to life.
+        </p>
+        <div class="flex items-center gap-6 pt-4">
+          <div class="flex items-center gap-2 text-white">
+            <span class="material-symbols-outlined">mail</span>
+            <span class="font-medium">hello@clara-interiors.com</span>
+          </div>
+          <div class="flex items-center gap-2 text-white">
+            <span class="material-symbols-outlined">call</span>
+            <span class="font-medium">+44 (0) 20 1234 5678</span>
+          </div>
+        </div>
+      </div>
+      <form
+        class="w-full max-w-md bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 space-y-4"
+      >
+        <div class="space-y-1">
+          <label class="text-sm text-white/70 font-medium ml-1" for="name"
+            >Name</label
+          >
+          <input
+            class="w-full bg-background-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+            id="name"
+            placeholder="Your name"
+            type="text"
+          />
+        </div>
+        <div class="space-y-1">
+          <label class="text-sm text-white/70 font-medium ml-1" for="email"
+            >Email</label
+          >
+          <input
+            class="w-full bg-background-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+            id="email"
+            placeholder="Your email address"
+            type="email"
+          />
+        </div>
+        <button
+          class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-lg mt-2 transition-colors shadow-lg"
+          type="button"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+</main>
