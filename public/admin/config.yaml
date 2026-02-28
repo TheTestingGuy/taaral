@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway # Permet d'utiliser Netlify Identity pour la connexion
+  branch: main # Change si ta branche principale s'appelle 'master'
+
+# Gestion des images
+media_folder: "public/uploads" # Où le CMS sauvegarde les images
+public_folder: "/uploads" # Le chemin que le CMS écrit dans le Markdown
+
+collections:
+  - name: "projects"
+    label: "Projets"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre du projet", name: "title", widget: "string" }
+      - { label: "Localisation", name: "location", widget: "string" }
+      - { label: "Image principale", name: "image", widget: "image" }
+      - { label: "Ordre d'affichage", name: "order", widget: "number", value_type: "int" }
+      - { label: "Description (Texte principal)", name: "body", widget: "markdown", required: false }
