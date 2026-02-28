@@ -1,0 +1,111 @@
+---
+// src/pages/projects.astro
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+// 1. On récupère tous les projets et on les trie par 'order'
+const allProjects = await getCollection("projects");
+const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
+
+// 2. On définit nos 5 styles de cartes asymétriques pour recréer le design de Stitch
+const cardStyles = [
+  { wrapper: "md:col-span-7", aspect: "aspect-[4/3]" },
+  { wrapper: "md:col-span-5 md:mt-24", aspect: "aspect-[3/4]" },
+  { wrapper: "md:col-span-5", aspect: "aspect-square" },
+  { wrapper: "md:col-span-7 md:mt-16", aspect: "aspect-[16/10]" },
+  { wrapper: "col-span-1 md:col-span-12 mt-12", aspect: "aspect-[21/9]" }, // Pleine largeur
+];
+---
+
+<Layout title="Material Creative - Projects">
+  <div class="max-w-[1920px] mx-auto w-full px-4 md:px-8 lg:px-16 pb-20">
+    <section class="mb-24 md:mb-32 max-w-4xl mx-auto text-center fade-in-up">
+      <div
+        class="relative w-full aspect-[16/10] mb-12 overflow-hidden rounded shadow-2xl"
+      >
+        <img
+          alt="Elegant modern office interior"
+          class="object-cover w-full h-full transform hover:scale-105 transition-transform duration-[1.5s] ease-out"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfSKqQ-I5u3snz9wqpBAT4TX5FNilIUdoTcF6C2GTVMuAxXvaRzDZj-VRvoLFVyo33ENPae2DGOrk4Orj52cZ89sonMfAGuEbZFoP2Qf02thNQZ9pipHcdkdla0rpYQ7yL75-5vus5-UODqExP0PgcoNkxrBEi5ssZi35_aNNoX9pzqzDNrtVVkWxfTdCE_AuUmsQNES2XonjVEtyfxbmfYrKCEULWqHCcex9ErUl_B5eamBA1WGXCEuGChIFD2Uq8GWXYYUoSGGY"
+        />
+      </div>
+      <h2
+        class="font-display text-3xl md:text-5xl lg:text-6xl leading-tight md:leading-snug text-primary-projects mb-8 max-w-3xl mx-auto opacity-90"
+      >
+        We are on a mission to challenge the status quo...
+      </h2>
+    </section>
+
+    <section
+      class="grid grid-cols-1 md:grid-cols-12 gap-y-16 gap-x-8 md:gap-x-12 items-start"
+    >
+      {
+        sortedProjects.map((project, index) => {
+          // Modulo 5 permet de répéter le pattern si on a plus de 5 projets !
+          const style = cardStyles[index % 5];
+          const delayClass = `delay-${((index % 4) + 1) * 100}`; // Génère delay-100, delay-200...
+
+          return (
+            <a
+              href={`/projects/${project.slug}`}
+              class={`block ${style.wrapper} group cursor-pointer fade-in-up ${delayClass}`}
+            >
+              {" "}
+              <div
+                class={`relative overflow-hidden rounded-sm ${style.aspect} mb-4`}
+              >
+                <img
+                  alt={project.data.title}
+                  class="object-cover w-full h-full image-hover-zoom"
+                  src={project.data.image}
+                  transition:name={`image-${project.slug}`}
+                />
+              </div>
+              <div class="flex flex-col md:flex-row md:items-baseline justify-between border-t border-primary-projects/20 pt-4 mt-2">
+                <h3 class="font-display text-2xl md:text-3xl italic text-primary-projects group-hover:text-accent transition-colors">
+                  {project.data.title}
+                </h3>
+                <p class="text-sm uppercase tracking-widest text-primary-projects/60 mt-1 md:mt-0">
+                  {project.data.location}
+                </p>
+              </div>
+            </a>
+          );
+        })
+      }
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  .delay-300 {
+    animation-delay: 0.3s;
+  }
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .image-hover-zoom {
+    transition: transform 0.7s ease;
+  }
+  .group:hover .image-hover-zoom {
+    transform: scale(1.03);
+  }
+</style>

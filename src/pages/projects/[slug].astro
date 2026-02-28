@@ -1,0 +1,70 @@
+---
+// src/pages/projects/[slug].astro
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+
+// 1. Cette fonction dit à Astro quelles pages générer
+export async function getStaticPaths() {
+  const projectEntries = await getCollection("projects");
+  return projectEntries.map((entry) => ({
+    params: { slug: entry.slug }, // L'URL de la page (ex: serenity-spa)
+    props: { entry }, // Les données passées à la page
+  }));
+}
+
+// 2. On récupère les données du projet pour la page en cours
+const { entry } = Astro.props;
+const { Content } = await entry.render(); // Permet de transformer le Markdown en HTML
+---
+
+<Layout title={`Material Creative - ${entry.data.title}`}>
+  <article
+    class="max-w-[1920px] mx-auto w-full px-4 md:px-8 lg:px-16 pt-12 pb-32"
+  >
+    <a
+      href="/projects"
+      class="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-widest hover:opacity-70 transition-opacity mb-16 md:mb-24 group"
+    >
+      <span
+        class="material-icons text-sm group-hover:-translate-x-1 transition-transform"
+        >arrow_back</span
+      >
+      Back to projects
+    </a>
+
+    <header
+      class="mb-12 md:mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8"
+    >
+      <h1
+        class="font-display text-5xl md:text-7xl lg:text-8xl leading-none text-primary-projects"
+      >
+        {entry.data.title}
+      </h1>
+      <div class="text-left md:text-right">
+        <span class="block text-xs uppercase tracking-widest opacity-60 mb-1"
+          >Location</span
+        >
+        <span class="font-display text-xl md:text-2xl text-primary-projects"
+          >{entry.data.location}</span
+        >
+      </div>
+    </header>
+
+    <div
+      class="w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm mb-16 shadow-2xl"
+    >
+      <img
+        src={entry.data.image}
+        alt={entry.data.title}
+        class="w-full h-full object-cover"
+        transition:name={`image-${entry.slug}`}
+      />
+    </div>
+
+    <div
+      class="max-w-3xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-display prose-p:font-light prose-a:text-accent opacity-90"
+    >
+      <Content />
+    </div>
+  </article>
+</Layout>

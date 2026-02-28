@@ -1,17 +1,33 @@
 ---
-
+import Layout from "@layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>My Astro Site</h1>
-		<h1>COUCOU</h1>
-	</body>
-</html>
+<Layout title="Material Creative">
+  <div class="bg-background-light dark:bg-background-dark text-primary font-body min-h-screen flex flex-col">
+    <main class="flex-grow pt-32 md:pt-48 px-4 md:px-12 w-full max-w-7xl mx-auto flex flex-col items-center">
+      <div class="w-full relative aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-sm shadow-2xl mb-16 group">
+        <img
+          alt="Sophisticated modern interior"
+          class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoVBaduTthYn6C2YPIVRwrZwRuKG3tzUuRIYFzYBuvvPTxqM_il0m-EH2RzgcROCAo1mK-Yi59gin9gkYD7pVwpw3lAFeLOranQxuXjxIAhhhcmdWcDDTuYKgZno4KOuS1n3c0V9Mcj2AdxygULMc5sdtIYHEVkiblrpZqiOWEDygNng740wBzcwEH8SedHSNvbVoC_2c32ujosc6wBoYK67MqOtWtLHJAdvTn4qGBIka5gFplafamwy6tbYTUMb34WENLjhhxKAs"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background-light/20 to-transparent pointer-events-none dark:from-background-dark/40">
+        </div>
+      </div>
+
+      <div class="w-full max-w-5xl mx-auto mb-24 md:mb-32">
+        <h2 class="font-serif text-3xl md:text-5xl lg:text-7xl leading-tight md:leading-snug text-accent dark:text-secondary opacity-90">
+          We are on a mission to challenge the status quo... to a interior of
+          Interior design delvoyet experience nation of perely and dbose an ext
+          blaters.
+        </h2>
+      </div>
+
+      <div class="w-full max-w-5xl mx-auto border-t border-primary/20 pt-8 pb-4 opacity-50 hover:opacity-100 transition-opacity duration-500 cursor-pointer">
+        <h3 class="font-display text-4xl md:text-6xl italic text-primary dark:text-gray-300">
+          More inspiration...
+        </h3>
+      </div>
+    </main>
+  </div>
+</Layout>
