@@ -2,6 +2,7 @@
 // src/pages/projects/[slug].astro
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 // 1. Cette fonction dit à Astro quelles pages générer
 export async function getStaticPaths() {
@@ -53,7 +54,7 @@ const { Content } = await entry.render(); // Permet de transformer le Markdown e
     <div
       class="w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm mb-16 shadow-2xl"
     >
-      <img
+      <Image
         src={entry.data.image}
         alt={entry.data.title}
         class="w-full h-full object-cover"

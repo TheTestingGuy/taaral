@@ -2,11 +2,13 @@ import { z, defineCollection } from 'astro:content';
 
 const projectsCollection = defineCollection({
   type: 'content',
-  schema: z.object({
+  // 1. On passe la fonction helper 'image' ici
+  schema: ({ image }) => z.object({
     title: z.string(),
     location: z.string(),
-    image: z.string(), // Plus tard, on pourra utiliser image() d'Astro pour l'optimisation
-    order: z.number(), // Pour trier l'ordre d'affichage
+    // 2. On indique que ce champ est une vraie image !
+    image: image(), 
+    order: z.number(),
   }),
 });
 

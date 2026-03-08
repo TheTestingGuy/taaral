@@ -2,6 +2,7 @@
 // src/pages/projects.astro
 import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { Image } from 'astro:assets';
 
 // 1. On récupère tous les projets et on les trie par 'order'
 const allProjects = await getCollection("projects");
@@ -54,10 +55,10 @@ const cardStyles = [
               <div
                 class={`relative overflow-hidden rounded-sm ${style.aspect} mb-4`}
               >
-                <img
+                <Image
+                  src={project.data.image}
                   alt={project.data.title}
                   class="object-cover w-full h-full image-hover-zoom"
-                  src={project.data.image}
                   transition:name={`image-${project.slug}`}
                 />
               </div>
