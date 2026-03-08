@@ -2,12 +2,10 @@ import { config, fields, collection } from '@keystatic/core';
 
 export default config({
   storage: {
-    // 🪄 C'est ici que la magie opère
     kind: process.env.NODE_ENV === 'development' ? 'local' : 'cloud',
   },
   cloud: {
-    // On remplira ça juste après !
-    project: 'ton-compte/ton-projet', 
+    project: 'taaral/taaral', 
   },
   collections: {
     projects: collection({
