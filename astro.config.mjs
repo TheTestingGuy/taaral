@@ -5,6 +5,9 @@ import keystatic from '@keystatic/astro';
 
 import markdoc from '@astrojs/markdoc';
 
+import netlify from '@astrojs/netlify';
+
 export default defineConfig({
   integrations: [tailwind(), react(), keystatic(), markdoc()],
+  adapter: netlify(),
 });
