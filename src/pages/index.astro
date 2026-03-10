@@ -1,33 +1,42 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import AboutSection from "@components/homeSection/AboutSection.astro";
+import ProjectPreviewSection from "@components/homeSection/ProjectPreviewSection.astro";
+import ContactSection from "@components/homeSection/ContactSection.astro";
 ---
 
-<Layout title="Material Creative">
-  <div class="bg-background-light dark:bg-background-dark text-primary font-body min-h-screen flex flex-col">
-    <main class="flex-grow pt-32 md:pt-48 px-4 md:px-12 w-full max-w-7xl mx-auto flex flex-col items-center">
-      <div class="w-full relative aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-sm shadow-2xl mb-16 group">
-        <img
-          alt="Sophisticated modern interior"
-          class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoVBaduTthYn6C2YPIVRwrZwRuKG3tzUuRIYFzYBuvvPTxqM_il0m-EH2RzgcROCAo1mK-Yi59gin9gkYD7pVwpw3lAFeLOranQxuXjxIAhhhcmdWcDDTuYKgZno4KOuS1n3c0V9Mcj2AdxygULMc5sdtIYHEVkiblrpZqiOWEDygNng740wBzcwEH8SedHSNvbVoC_2c32ujosc6wBoYK67MqOtWtLHJAdvTn4qGBIka5gFplafamwy6tbYTUMb34WENLjhhxKAs"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-background-light/20 to-transparent pointer-events-none dark:from-background-dark/40">
+<Layout title="Taaral intérieur - Accueil">
+  <div class="font-body min-h-screen flex flex-col">
+    <section
+      data-bg="bg-secondary-dark"
+      class="w-full text-white pt-80 md:pt-96 pb-24 px-4 md:px-12 flex flex-col items-center bg-transparent"
+    >
+      <div class="w-full max-w-[1400px] mx-auto">
+        <div
+          class="w-full relative aspect-[16/9] md:aspect-[21/9] overflow-hidden shadow-2xl mb-16 md:mb-24 group"
+        >
+          <img
+            alt="Sophisticated modern interior"
+            class="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105 ease-out"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoVBaduTthYn6C2YPIVRwrZwRuKG3tzUuRIYFzYBuvvPTxqM_il0m-EH2RzgcROCAo1mK-Yi59gin9gkYD7pVwpw3lAFeLOranQxuXjxIAhhhcmdWcDDTuYKgZno4KOuS1n3c0V9Mcj2AdxygULMc5sdtIYHEVkiblrpZqiOWEDygNng740wBzcwEH8SedHSNvbVoC_2c32ujosc6wBoYK67MqOtWtLHJAdvTn4qGBIka5gFplafamwy6tbYTUMb34WENLjhhxKAs"
+          />
+        </div>
+        <div class="w-full max-w-4xl mx-auto text-center md:text-left">
+          <h2
+            class="font-serif text-3xl md:text-5xl lg:text-6xl leading-tight text-white/95"
+          >
+            We are on a mission to challenge the status quo... to an interior
+            experience that speaks to the soul.
+          </h2>
         </div>
       </div>
+    </section>
 
-      <div class="w-full max-w-5xl mx-auto mb-24 md:mb-32">
-        <h2 class="font-serif text-3xl md:text-5xl lg:text-7xl leading-tight md:leading-snug text-accent dark:text-secondary opacity-90">
-          We are on a mission to challenge the status quo... to a interior of
-          Interior design delvoyet experience nation of perely and dbose an ext
-          blaters.
-        </h2>
-      </div>
+    <AboutSection />
 
-      <div class="w-full max-w-5xl mx-auto border-t border-primary/20 pt-8 pb-4 opacity-50 hover:opacity-100 transition-opacity duration-500 cursor-pointer">
-        <h3 class="font-display text-4xl md:text-6xl italic text-primary dark:text-gray-300">
-          More inspiration...
-        </h3>
-      </div>
-    </main>
+    <section data-bg="bg-secondary-dark" class="w-full text-white pt-24 bg-transparent">
+      <ProjectPreviewSection />
+      <ContactSection />
+    </section>
   </div>
 </Layout>

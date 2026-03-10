@@ -1,23 +1,25 @@
 ---
 // src/layouts/Layout.astro
-import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Header from "@components/Header";
 
 import { ClientRouter } from "astro:transitions";
 
-// Imports des polices locales Fontsource
-import '@fontsource/dm-serif-display';
-import '@fontsource/inter/300.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/playfair-display/400.css';
-import '@fontsource/playfair-display/400-italic.css';
-import '@fontsource/playfair-display/500.css';
-import '@fontsource/playfair-display/600.css';
-import '@fontsource/playfair-display/700.css';
+import ScrollColorObserver from "@components/react/ScrollColorObserver";
 
-import 'material-icons/iconfont/material-icons.css';
-import 'material-symbols/outlined.css';
+// Imports des polices locales Fontsource
+import "@fontsource/dm-serif-display";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/playfair-display/400.css";
+import "@fontsource/playfair-display/400-italic.css";
+import "@fontsource/playfair-display/500.css";
+import "@fontsource/playfair-display/600.css";
+import "@fontsource/playfair-display/700.css";
+
+import "material-icons/iconfont/material-icons.css";
+import "material-symbols/outlined.css";
 
 interface Props {
   title: string;
@@ -36,15 +38,17 @@ const { title } = Astro.props;
     <ClientRouter />
   </head>
   <body
-    class="bg-background-light dark:bg-background-dark text-primary font-body transition-colors duration-300 antialiased min-h-screen flex flex-col selection:bg-accent selection:text-background-dark"
+    class="text-primary font-body antialiased min-h-screen flex flex-col selection:bg-accent selection:text-background-dark transition-colors duration-[800ms] ease-in-out"
   >
-    <Header />
+    <Header client:load />
 
-    <main class="flex-grow pt-32 w-full flex flex-col items-center">
+    <main class="flex-grow w-full flex flex-col items-center">
       <slot />
     </main>
 
     <Footer />
+
+    <ScrollColorObserver client:idle />
   </body>
 </html>
 
@@ -53,18 +57,26 @@ const { title } = Astro.props;
   /* ::view-transition-group(*), */
   /* ::view-transition-old(*), */
   /* ::view-transition-new(*) { */
-      /* animation-duration: 0.8s; Règle la durée ici (0.8s donne un bel effet "cinématographique") */
-      /* animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); Une courbe d'accélération très douce (ease-in-out) */
+  /* animation-duration: 0.8s; Règle la durée ici (0.8s donne un bel effet "cinématographique") */
+  /* animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); Une courbe d'accélération très douce (ease-in-out) */
   /* } */
 
+  @font-face {
+    font-family: "DigitalGeometric"; /* Le nom que tu veux lui donner */
+    src: url("/fonts/digital_geometric_bold.ttf") format("truetype"); /* Le chemin vers ton fichier */
+    font-weight: bold; /* Modifie si c'est du gras (bold) etc. */
+    font-style: normal;
+    font-display: swap; /* Permet d'afficher le texte sans attendre le chargement complet */
+  }
+
   ::-webkit-scrollbar {
-      width: 8px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-      background: #2A0F10;
+    background: #2a0f10;
   }
   ::-webkit-scrollbar-thumb {
-      background: #AE5E4C;
-      border-radius: 4px;
+    background: #ae5e4c;
+    border-radius: 4px;
   }
 </style>

@@ -17,9 +17,11 @@ export default {
         accent: "#AE5E4C",
         secondary: "#C07A65",
         "secondary-dark": "#6B2628",
+        "accent-dark": "#571F23",
         "secondary-light": "#E0D6CC",
       },
       fontFamily: {
+        logo: ["'DigitalGeometric'", "serif"],
         display: ["'Playfair Display'", "serif"],
         body: ["'Inter'", "sans-serif"],
         sans: ["'Inter'", "sans-serif"],

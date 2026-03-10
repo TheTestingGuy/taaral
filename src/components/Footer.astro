@@ -2,13 +2,54 @@
 
 ---
 
-<footer class="w-full px-6 py-6 md:px-12 md:py-8 border-t border-white/10 dark:border-white/5 mt-auto bg-background-light dark:bg-background-dark transition-colors duration-300 relative z-40">
-  <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm uppercase tracking-widest">
-      <a class="hover:opacity-70 transition-opacity" href="#">Instagram</a>
-      <a class="hover:opacity-70 transition-opacity" href="#">Email Us</a>
-      <a class="flex items-center gap-2 hover:opacity-70 transition-opacity group" href="#">
-          Subscribe 
-          <span class="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
-      </a>
+<footer class="w-full bg-[#351419] text-white/80 py-16 md:py-20 px-6 md:px-12 font-sans relative z-40">
+  <div class="max-w-[1920px] mx-auto">
+    
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+      
+      <div class="md:col-span-6 lg:col-span-5 flex flex-col">
+        
+        <div class="flex items-center gap-3 text-white mb-6">
+          <span class="material-symbols-outlined text-xl font-light">architecture</span>
+          <span class="font-display font-semibold uppercase tracking-widest text-sm md:text-base">
+            Taaral Intérieur
+          </span>
+        </div>
+        
+        <p class="text-white/60 text-sm md:text-base leading-relaxed max-w-sm mb-8">
+          Designing spaces that breathe culture, sophistication, and timeless elegance.
+        </p>
+        
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#" class="hover:text-white transition-colors">Instagram</a>
+          <a href="#" class="hover:text-white transition-colors">Pinterest</a>
+          <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="md:col-span-6 lg:col-span-4 lg:col-start-9 grid grid-cols-2 gap-8">
+        
+        <div class="flex flex-col gap-4">
+          <h4 class="text-xs uppercase tracking-[0.15em] text-white font-semibold mb-2">Explore</h4>
+          <a href="/projects" class="text-white/60 hover:text-white transition-colors text-sm">Projects</a>
+          <a href="/#about" class="text-white/60 hover:text-white transition-colors text-sm">Philosophy</a>
+          <a href="/#about" class="text-white/60 hover:text-white transition-colors text-sm">About Taaral</a>
+          <a href="/#contact" class="text-white/60 hover:text-white transition-colors text-sm">Contact</a>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h4 class="text-xs uppercase tracking-[0.15em] text-white font-semibold mb-2">Legal</h4>
+          <a href="#" class="text-white/60 hover:text-white transition-colors text-sm">Privacy Policy</a>
+          <a href="#" class="text-white/60 hover:text-white transition-colors text-sm">Terms of Use</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mt-16 md:mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-xs text-white/50">
+      <p>© {new Date().getFullYear()} Taaral Intérieur. All rights reserved.</p>
+      <p>Designed with passion.</p>
+    </div>
+
   </div>
 </footer>
