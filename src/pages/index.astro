@@ -1,29 +1,29 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import AboutSection from "@components/homeSection/AboutSection.astro";
-import ProjectPreviewSection from "@components/homeSection/ProjectPreviewSection.astro";
-import ContactSection from "@components/homeSection/ContactSection.astro";
+import AboutSection from "@components/home/AboutSection.astro";
+import ProjectPreviewSection from "@components/home/ProjectPreviewSection.astro";
+import ContactSection from "@components/home/ContactSection.astro";
 ---
 
 <Layout title="Taaral intérieur - Accueil">
-  <div class="font-body min-h-screen flex flex-col">
+  <div class="flex min-h-screen flex-col font-body">
     <section
       data-bg="bg-secondary-dark"
-      class="w-full text-white pt-80 md:pt-96 pb-24 px-4 md:px-12 flex flex-col items-center bg-transparent"
+      class="flex w-full flex-col items-center bg-transparent px-4 pb-24 text-white md:px-12"
     >
-      <div class="w-full max-w-[1400px] mx-auto">
+      <div class="mx-auto w-full max-w-[1400px]">
         <div
-          class="w-full relative aspect-[16/9] md:aspect-[21/9] overflow-hidden shadow-2xl mb-16 md:mb-24 group"
+          class="group relative mb-16 aspect-[16/9] w-full overflow-hidden shadow-2xl md:mb-24 md:aspect-[21/9]"
         >
           <img
             alt="Sophisticated modern interior"
-            class="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105 ease-out"
+            class="size-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoVBaduTthYn6C2YPIVRwrZwRuKG3tzUuRIYFzYBuvvPTxqM_il0m-EH2RzgcROCAo1mK-Yi59gin9gkYD7pVwpw3lAFeLOranQxuXjxIAhhhcmdWcDDTuYKgZno4KOuS1n3c0V9Mcj2AdxygULMc5sdtIYHEVkiblrpZqiOWEDygNng740wBzcwEH8SedHSNvbVoC_2c32ujosc6wBoYK67MqOtWtLHJAdvTn4qGBIka5gFplafamwy6tbYTUMb34WENLjhhxKAs"
           />
         </div>
-        <div class="w-full max-w-4xl mx-auto text-center md:text-left">
+        <div class="mx-auto w-full max-w-4xl text-center md:text-left">
           <h2
-            class="font-serif text-3xl md:text-5xl lg:text-6xl leading-tight text-white/95"
+            class="font-serif text-3xl leading-tight text-white/95 md:text-5xl lg:text-6xl"
           >
             We are on a mission to challenge the status quo... to an interior
             experience that speaks to the soul.
@@ -34,7 +34,10 @@ import ContactSection from "@components/homeSection/ContactSection.astro";
 
     <AboutSection />
 
-    <section data-bg="bg-secondary-dark" class="w-full text-white pt-24 bg-transparent">
+    <section
+      data-bg="bg-secondary-dark"
+      class="w-full bg-transparent pt-24 text-white"
+    >
       <ProjectPreviewSection />
       <ContactSection />
     </section>

@@ -1,0 +1,49 @@
+---
+
+---
+
+<div
+  id="preloader"
+  class="fixed inset-0 z-[100] flex items-center justify-center bg-[#351419] transition-opacity duration-1000 ease-in-out"
+>
+  <div class="w-48 animate-pulse text-white md:w-64">
+    <svg
+      width="45"
+      height="12"
+      viewBox="0 0 45 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-auto w-full fill-current text-accent"
+    >
+      <path
+        d="M-2.73809e-06 1.956V2.38419e-07H6.852V1.956H4.404V11.256H2.448V1.956H-2.73809e-06ZM5.94984 6.852C5.94984 4.416 7.91784 2.448 10.3658 2.448C12.7898 2.448 14.7578 4.416 14.7578 6.852V11.256H12.8018V6.852C12.8018 5.496 11.6978 4.392 10.3658 4.392C9.00984 4.392 7.90584 5.496 7.90584 6.852C7.90584 8.184 9.00984 9.3 10.3658 9.3C10.8938 9.3 11.3978 9.12 11.7938 8.82V11.004C11.3498 11.16 10.8578 11.256 10.3658 11.256C7.91784 11.256 5.94984 9.276 5.94984 6.852ZM16.192 6.852C16.192 4.416 18.16 2.448 20.608 2.448C23.032 2.448 25 4.416 25 6.852V11.256H23.044V6.852C23.044 5.496 21.94 4.392 20.608 4.392C19.252 4.392 18.148 5.496 18.148 6.852C18.148 8.184 19.252 9.3 20.608 9.3C21.136 9.3 21.64 9.12 22.036 8.82V11.004C21.592 11.16 21.1 11.256 20.608 11.256C18.16 11.256 16.192 9.276 16.192 6.852ZM26.9142 11.256V6.84C26.9142 4.392 28.8942 2.448 31.3302 2.448V4.404C29.9862 4.404 28.8822 5.496 28.8822 6.84V11.256H26.9142ZM31.9303 6.852C31.9303 4.416 33.8983 2.448 36.3463 2.448C38.7703 2.448 40.7383 4.416 40.7383 6.852V11.256H38.7823V6.852C38.7823 5.496 37.6783 4.392 36.3463 4.392C34.9903 4.392 33.8863 5.496 33.8863 6.852C33.8863 8.184 34.9903 9.3 36.3463 9.3C36.8743 9.3 37.3783 9.12 37.7743 8.82V11.004C37.3303 11.16 36.8383 11.256 36.3463 11.256C33.8983 11.256 31.9303 9.276 31.9303 6.852ZM42.6525 2.38419e-07H44.6085V11.256H42.6525V2.38419e-07Z"
+        fill="currentColor"
+      >
+      </path>
+    </svg>
+  </div>
+</div>
+
+<script>
+  // 1. Au tout premier chargement du site (quand les polices et images sont prêtes)
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+      // On le rend transparent en douceur
+      preloader.classList.add("opacity-0");
+      // Puis on le retire complètement du DOM après 1 seconde (la durée du fondu)
+      setTimeout(() => {
+        preloader.classList.add("hidden");
+      }, 1000);
+    }
+  });
+
+  // 2. Astuce Astro : Cache le loader instantanément lors de la navigation interne
+  // pour laisser les View Transitions faire leur travail de morphing
+  document.addEventListener("astro:after-swap", () => {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+      preloader.classList.add("hidden");
+    }
+  });
+</script>

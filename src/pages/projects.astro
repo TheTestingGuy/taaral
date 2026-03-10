@@ -2,7 +2,7 @@
 // src/pages/projects.astro
 import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 // 1. On récupère tous les projets et on les trie par 'order'
 const allProjects = await getCollection("projects");
@@ -19,26 +19,26 @@ const cardStyles = [
 ---
 
 <Layout title="Material Creative - Projects">
-  <div class="max-w-[1920px] mx-auto w-full px-4 md:px-8 lg:px-16 pb-20">
-    <section class="mb-24 md:mb-32 max-w-4xl mx-auto text-center fade-in-up">
+  <div class="mx-auto w-full max-w-[1920px] px-4 pb-20 md:px-8 lg:px-16">
+    <section class="fade-in-up mx-auto mb-24 max-w-4xl text-center md:mb-32">
       <div
-        class="relative w-full aspect-[16/10] mb-12 overflow-hidden rounded shadow-2xl"
+        class="relative mb-12 aspect-[16/10] w-full overflow-hidden rounded shadow-2xl"
       >
         <img
           alt="Elegant modern office interior"
-          class="object-cover w-full h-full transform hover:scale-105 transition-transform duration-[1.5s] ease-out"
+          class="size-full object-cover transition-transform duration-[1.5s] ease-out hover:scale-105"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfSKqQ-I5u3snz9wqpBAT4TX5FNilIUdoTcF6C2GTVMuAxXvaRzDZj-VRvoLFVyo33ENPae2DGOrk4Orj52cZ89sonMfAGuEbZFoP2Qf02thNQZ9pipHcdkdla0rpYQ7yL75-5vus5-UODqExP0PgcoNkxrBEi5ssZi35_aNNoX9pzqzDNrtVVkWxfTdCE_AuUmsQNES2XonjVEtyfxbmfYrKCEULWqHCcex9ErUl_B5eamBA1WGXCEuGChIFD2Uq8GWXYYUoSGGY"
         />
       </div>
       <h2
-        class="font-display text-3xl md:text-5xl lg:text-6xl leading-tight md:leading-snug text-primary-projects mb-8 max-w-3xl mx-auto opacity-90"
+        class="mx-auto mb-8 max-w-3xl font-display text-3xl leading-tight text-primary-projects opacity-90 md:text-5xl md:leading-snug lg:text-6xl"
       >
         We are on a mission to challenge the status quo...
       </h2>
     </section>
 
     <section
-      class="grid grid-cols-1 md:grid-cols-12 gap-y-16 gap-x-8 md:gap-x-12 items-start"
+      class="grid grid-cols-1 items-start gap-x-8 gap-y-16 md:grid-cols-12 md:gap-x-12"
     >
       {
         sortedProjects.map((project, index) => {
@@ -49,7 +49,7 @@ const cardStyles = [
           return (
             <a
               href={`/projects/${project.slug}`}
-              class={`block ${style.wrapper} group cursor-pointer fade-in-up ${delayClass}`}
+              class={`block ${style.wrapper} fade-in-up group cursor-pointer ${delayClass}`}
             >
               {" "}
               <div
@@ -58,15 +58,15 @@ const cardStyles = [
                 <Image
                   src={project.data.image}
                   alt={project.data.title}
-                  class="object-cover w-full h-full image-hover-zoom"
+                  class="image-hover-zoom size-full object-cover"
                   transition:name={`image-${project.slug}`}
                 />
               </div>
-              <div class="flex flex-col md:flex-row md:items-baseline justify-between border-t border-primary-projects/20 pt-4 mt-2">
-                <h3 class="font-display text-2xl md:text-3xl italic text-primary-projects group-hover:text-accent transition-colors">
+              <div class="mt-2 flex flex-col justify-between border-t border-primary-projects/20 pt-4 md:flex-row md:items-baseline">
+                <h3 class="font-display text-2xl italic text-primary-projects transition-colors group-hover:text-accent md:text-3xl">
                   {project.data.title}
                 </h3>
-                <p class="text-sm uppercase tracking-widest text-primary-projects/60 mt-1 md:mt-0">
+                <p class="mt-1 text-sm uppercase tracking-widest text-primary-projects/60 md:mt-0">
                   {project.data.location}
                 </p>
               </div>

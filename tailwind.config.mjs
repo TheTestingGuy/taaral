@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: "class",
   theme: {
     extend: {
@@ -9,8 +9,8 @@ export default {
         primary: "#EAE0D5", // Crème (Home)
         "primary-about": "#AE5E4C", // Terracotta (About)
         "primary-projects": "#E8CBB8", // Beige clair (Projects)
-        "background-light": "#4F1D1F", 
-        "background-dark": "#2A0F10", 
+        "background-light": "#4F1D1F",
+        "background-dark": "#2A0F10",
         "bg-about-light": "#F9F5F1",
         "bg-about-dark": "#4E2629",
         "bg-proj-light": "#F5F0EB",

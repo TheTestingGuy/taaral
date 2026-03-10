@@ -1,11 +1,10 @@
 ---
-// src/layouts/Layout.astro
 import Footer from "@components/Footer.astro";
-import Header from "@components/Header";
+import Header from "@components/HeaderNew.astro";
+// import Header from "@components/Header.astro";
+import Loader from "@components/Loader.astro";
 
 import { ClientRouter } from "astro:transitions";
-
-import ScrollColorObserver from "@components/react/ScrollColorObserver";
 
 // Imports des polices locales Fontsource
 import "@fontsource/dm-serif-display";
@@ -33,22 +32,55 @@ const { title } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <title>{title}</title>
 
     <ClientRouter />
   </head>
   <body
-    class="text-primary font-body antialiased min-h-screen flex flex-col selection:bg-accent selection:text-background-dark transition-colors duration-[800ms] ease-in-out"
+    class="flex min-h-screen flex-col bg-secondary-dark font-body text-primary antialiased transition-colors duration-[800ms] ease-in-out selection:bg-accent selection:text-background-dark"
   >
-    <Header client:load />
+    <Loader />
 
-    <main class="flex-grow w-full flex flex-col items-center">
+    <Header />
+
+    <main class="flex w-full grow flex-col items-center pt-80 md:pt-96">
       <slot />
     </main>
 
     <Footer />
 
-    <ScrollColorObserver client:idle />
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        let currentBgClass = "";
+        const sections = document.querySelectorAll("[data-bg]");
+        const body = document.body;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const newBgClass = entry.target.getAttribute("data-bg");
+
+                if (newBgClass && newBgClass !== currentBgClass) {
+                  if (currentBgClass) {
+                    body.classList.remove(...currentBgClass.split(" "));
+                  }
+                  body.classList.add(...newBgClass.split(" "));
+                  currentBgClass = newBgClass;
+                }
+              }
+            });
+          },
+          {
+            rootMargin: "-50% 0px -50% 0px",
+          },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      });
+    </script>
   </body>
 </html>
 
