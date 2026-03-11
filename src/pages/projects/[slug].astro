@@ -1,71 +1,135 @@
 ---
-// src/pages/projects/[slug].astro
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
-// 1. Cette fonction dit à Astro quelles pages générer
+// 1. Fonction obligatoire dans Astro pour générer toutes les URL des projets
 export async function getStaticPaths() {
-  const projectEntries = await getCollection("projects");
-  return projectEntries.map((entry) => ({
-    params: { slug: entry.slug }, // L'URL de la page (ex: serenity-spa)
-    props: { entry }, // Les données passées à la page
-  }));
+  const allProjects = await getCollection("projects");
+
+  const sortedProjects = allProjects.sort(
+    (a, b) => a.data.order - b.data.order,
+  );
+
+  return sortedProjects.map((project, index) => {
+    const prevProject = index === 0 ? null : sortedProjects[index - 1];
+    const nextProject =
+      index === sortedProjects.length - 1 ? null : sortedProjects[index + 1];
+
+    return {
+      params: { slug: project.slug },
+      props: { project, prevProject, nextProject },
+    };
+  });
 }
 
-// 2. On récupère les données du projet pour la page en cours
-const { entry } = Astro.props;
-const { Content } = await entry.render(); // Permet de transformer le Markdown en HTML
+// 2. On récupère le projet actuel et son contenu texte
+const { project, prevProject, nextProject } = Astro.props;
+const { Content } = await project.render();
+
+const gallery = project.data.gallery || [];
 ---
 
-<Layout title={`Material Creative - ${entry.data.title}`}>
-  <article
-    class="max-w-[1920px] mx-auto w-full px-4 md:px-8 lg:px-16 pt-12 pb-32"
-  >
-    <a
-      href="/projects"
-      class="inline-flex items-center gap-2 text-xs md:text-sm uppercase tracking-widest hover:opacity-70 transition-opacity mb-16 md:mb-24 group"
-    >
-      <span
-        class="material-icons text-sm group-hover:-translate-x-1 transition-transform"
-        >arrow_back</span
-      >
-      Back to projects
-    </a>
-
-    <header
-      class="mb-12 md:mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8"
-    >
-      <h1
-        class="font-display text-5xl md:text-7xl lg:text-8xl leading-none text-primary-projects"
-      >
-        {entry.data.title}
+<Layout title={`Taaral - ${project.data.title}`}>
+  {/* EN-TÊTE DU PROJET */}
+  <section class="bg-transparent px-4 pb-16 pt-40 text-black md:px-12 md:pt-48">
+    <div class="mx-auto max-w-[1920px]">
+      <h1 class="mb-6 font-display text-5xl md:text-7xl lg:text-8xl">
+        {project.data.title}
       </h1>
-      <div class="text-left md:text-right">
-        <span class="block text-xs uppercase tracking-widest opacity-60 mb-1"
-          >Location</span
-        >
-        <span class="font-display text-xl md:text-2xl text-primary-projects"
-          >{entry.data.location}</span
-        >
-      </div>
-    </header>
+      <p class="font-sans text-xs uppercase tracking-[0.2em] text-[#C06C61]">
+        {project.data.location}
+      </p>
+    </div>
+  </section>
 
+  {/* IMAGE PRINCIPALE GÉANTE */}
+  <section class="mb-24 w-full px-4 md:px-12">
     <div
-      class="w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-sm mb-16 shadow-2xl"
+      class="mx-auto aspect-video w-full max-w-[1920px] overflow-hidden bg-gray-100"
     >
       <Image
-        src={entry.data.image}
-        alt={entry.data.title}
-        class="w-full h-full object-cover"
-        transition:name={`image-${entry.slug}`}
+        src={project.data.image}
+        alt={project.data.title}
+        class="size-full object-cover"
+        transition:name={`image-${project.slug}`}
       />
     </div>
+  </section>
 
+  {/* DESCRIPTION DU PROJET */}
+  <section class="mb-32 w-full px-4 md:px-12">
     <div
-      class="max-w-3xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-display prose-p:font-light prose-a:text-accent opacity-90"
+      class="prose prose-gray mx-auto max-w-3xl prose-p:text-lg prose-p:font-light prose-p:leading-relaxed prose-p:text-gray-600"
     >
       <Content />
     </div>
-  </article>
+  </section>
+
+  {/* LA FAMEUSE GALERIE PHOTOS */}
+  {
+    gallery.length > 0 && (
+      <section class="w-full px-4 pb-32 md:px-12">
+        <div class="mx-auto max-w-[1920px]">
+          <h2 class="mb-12 border-b border-gray-200 pb-4 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-black">
+            Project Gallery
+          </h2>
+
+          {/* Grille dynamique selon le nombre de photos */}
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
+            {gallery.map((image) => {
+              return (
+                <div class="aspect-square w-full overflow-hidden bg-gray-100">
+                  <Image
+                    src={image}
+                    alt={`${project.data.title} detail`}
+                    class="size-full object-cover"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* 🚀 NAVIGATION PRÉCÉDENT / SUIVANT */}
+  {
+    (prevProject || nextProject) && (
+      <section class="w-full border-t border-gray-200">
+        <div class="mx-auto flex max-w-[1920px] flex-col divide-y divide-gray-200 md:flex-row md:divide-x md:divide-y-0">
+          {/* BOUTON PRÉCÉDENT (S'affiche uniquement s'il existe) */}
+          {prevProject && (
+            <a
+              href={`/projects/${prevProject.slug}`}
+              class={`group flex w-full flex-col items-start bg-transparent p-8 text-black transition-colors hover:bg-[#351419] hover:text-white md:p-16 ${nextProject ? "md:w-1/2" : ""}`}
+            >
+              <span class="mb-4 text-[10px] uppercase tracking-widest text-gray-400 transition-colors group-hover:text-white/70">
+                Previous Project
+              </span>
+              <span class="font-display text-3xl transition-colors group-hover:text-[#C06C61] md:text-5xl">
+                {prevProject.data.title}
+              </span>
+            </a>
+          )}
+
+          {/* BOUTON SUIVANT (S'affiche uniquement s'il existe) */}
+          {nextProject && (
+            <a
+              href={`/projects/${nextProject.slug}`}
+              class={`group flex w-full flex-col items-end bg-transparent p-8 text-right text-black transition-colors hover:bg-[#351419] hover:text-white md:p-16 ${prevProject ? "md:w-1/2" : ""}`}
+            >
+              <span class="mb-4 text-[10px] uppercase tracking-widest text-gray-400 transition-colors group-hover:text-white/70">
+                Next Project
+              </span>
+              <span class="font-display text-3xl transition-colors group-hover:text-[#C06C61] md:text-5xl">
+                {nextProject.data.title}
+              </span>
+            </a>
+          )}
+        </div>
+      </section>
+    )
+  }
 </Layout>

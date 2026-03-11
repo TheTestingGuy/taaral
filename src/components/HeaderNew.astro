@@ -3,33 +3,28 @@
   class="fixed left-0 top-0 z-50 w-full transform-gpu bg-transparent p-6 text-white transition-all duration-[800ms] ease-in-out md:py-8"
 >
   <div class="mx-auto flex w-full max-w-[1920px] items-start justify-between">
-    {/* Colonne Gauche */}
+    {/* Colonne Gauche : Cachée sur mobile */}
     <div class="w-1/3 pt-2">
-      <a
-        href="/projects"
-        class="text-[10px] font-medium uppercase tracking-widest transition-opacity hover:opacity-70 md:text-xs"
-        >Projects</a
-      >
+      <div class="hidden md:flex">
+        <a
+          href="/projects"
+          class="text-[10px] font-medium uppercase tracking-widest transition-opacity hover:opacity-70 md:text-xs"
+          >Projects</a
+        >
+      </div>
     </div>
 
     {/* Colonne Centre : Le conteneur magique */}
     <div class="flex w-1/3 justify-center text-center">
-      {
-        /* 1. Le "Wrapper" relatif qui dicte la vraie hauteur physique au header */
-      }
       <a
         href="/"
         id="logo-wrapper"
         class="group relative h-[90px] w-full transition-all duration-[800ms] ease-in-out md:h-[140px] lg:h-[180px]"
       >
-        {
-          /* 2. Le texte absolu qui se redimensionne visuellement sans buguer Safari */
-        }
         <div
           id="header-title"
           class="absolute left-1/2 top-0 flex origin-top -translate-x-1/2 scale-100 flex-col items-center transition-transform duration-[800ms] ease-in-out will-change-transform"
         >
-          {/* whitespace-nowrap force le texte à rester sur une seule ligne */}
           <h1
             class="whitespace-nowrap font-logo text-6xl leading-none tracking-tight text-accent transition-opacity duration-300 group-hover:opacity-80 md:text-8xl lg:text-[9rem]"
           >
@@ -46,21 +41,69 @@
       </a>
     </div>
 
-    {/* Colonne Droite */}
-    <div class="flex w-1/3 justify-end gap-4 pt-2 text-right md:gap-8">
-      <a
-        href="/#about"
-        class="text-[10px] font-medium uppercase tracking-widest transition-opacity hover:opacity-70 md:text-xs"
-        >About</a
+    {/* Colonne Droite : Liens sur Desktop, Burger sur Mobile */}
+    <div class="flex w-1/3 justify-end pt-2 text-right">
+      {/* Liens Desktop */}
+      <div class="hidden gap-4 md:flex md:gap-8">
+        <a
+          href="/#about"
+          class="text-[10px] font-medium uppercase tracking-widest transition-opacity hover:opacity-70 md:text-xs"
+          >About</a
+        >
+        <a
+          href="/#contact"
+          class="text-[10px] font-medium uppercase tracking-widest transition-opacity hover:opacity-70 md:text-xs"
+          >Contact</a
+        >
+      </div>
+
+      {/* Bouton Burger Mobile */}
+      <button
+        id="burger-btn"
+        class="relative z-50 flex h-4 w-6 flex-col justify-between md:hidden"
+        aria-label="Menu"
       >
-      <a
-        href="/#contact"
-        class="text-[10px] font-medium uppercase tracking-widest transition-opacity hover:opacity-70 md:text-xs"
-        >Contact</a
-      >
+        <span
+          class="h-px w-full origin-center bg-current transition-all duration-300 ease-in-out"
+        ></span>
+        <span
+          class="h-px w-full origin-center bg-current transition-all duration-300 ease-in-out"
+        ></span>
+      </button>
     </div>
   </div>
 </header>
+
+{/* 2. LE MENU MOBILE (OVERLAY) */}
+<div
+  id="mobile-menu"
+  class="pointer-events-none fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#351419] text-white opacity-0 transition-opacity duration-500 ease-in-out"
+>
+  <nav class="flex flex-col items-center gap-8">
+    <a
+      href="/projects"
+      class="mobile-link font-display text-5xl transition-opacity hover:opacity-70"
+      >Projects</a
+    >
+    <a
+      href="/#about"
+      class="mobile-link font-display text-5xl transition-opacity hover:opacity-70"
+      >About</a
+    >
+    <a
+      href="/#contact"
+      class="mobile-link font-display text-5xl transition-opacity hover:opacity-70"
+      >Contact</a
+    >
+  </nav>
+
+  {/* Petit détail premium en bas du menu */}
+  <div class="absolute bottom-12 text-center">
+    <span class="font-sans text-[9px] uppercase tracking-widest text-white/50"
+      >Paris, France</span
+    >
+  </div>
+</div>
 
 <script>
   document.addEventListener("astro:page-load", () => {
@@ -68,6 +111,14 @@
     const logoWrapper = document.getElementById("logo-wrapper");
     const titleContainer = document.getElementById("header-title");
     const subtitle = document.getElementById("header-subtitle");
+
+    // Éléments du menu mobile
+    const burgerBtn = document.getElementById("burger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+    const burgerLines = burgerBtn ? burgerBtn.querySelectorAll("span") : [];
+
+    let isMenuOpen = false;
 
     if (!header || !logoWrapper || !titleContainer || !subtitle) return;
 
@@ -135,5 +186,41 @@
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
+
+    // --- LOGIQUE DU MENU MOBILE ---
+    if (burgerBtn && mobileMenu && burgerLines.length === 2) {
+      const toggleMenu = () => {
+        isMenuOpen = !isMenuOpen;
+
+        if (isMenuOpen) {
+          // Afficher le menu
+          mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+          mobileMenu.classList.add("opacity-100", "pointer-events-auto");
+          document.body.style.overflow = "hidden"; // Bloque le scroll de la page en dessous
+
+          // Animer le burger en "X" (On translate la ligne du haut vers le bas, et inversement)
+          burgerLines[0].classList.add("translate-y-[7.5px]", "rotate-45");
+          burgerLines[1].classList.add("-translate-y-[7.5px]", "-rotate-45");
+        } else {
+          // Cacher le menu
+          mobileMenu.classList.add("opacity-0", "pointer-events-none");
+          mobileMenu.classList.remove("opacity-100", "pointer-events-auto");
+          document.body.style.overflow = ""; // Restaure le scroll
+
+          // Remettre les lignes droites
+          burgerLines[0].classList.remove("translate-y-[7.5px]", "rotate-45");
+          burgerLines[1].classList.remove("-translate-y-[7.5px]", "-rotate-45");
+        }
+      };
+
+      burgerBtn.addEventListener("click", toggleMenu);
+
+      // Fermer le menu automatiquement quand on clique sur un lien (très important pour les ancres comme #about)
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (isMenuOpen) toggleMenu();
+        });
+      });
+    }
   });
 </script>

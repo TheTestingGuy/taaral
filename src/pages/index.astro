@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import Hero from "@components/Hero.astro";
 import AboutSection from "@components/home/AboutSection.astro";
 import ProjectPreviewSection from "@components/home/ProjectPreviewSection.astro";
 import ContactSection from "@components/home/ContactSection.astro";
@@ -7,30 +8,7 @@ import ContactSection from "@components/home/ContactSection.astro";
 
 <Layout title="Taaral intérieur - Accueil">
   <div class="flex min-h-screen flex-col font-body">
-    <section
-      data-bg="bg-secondary-dark"
-      class="flex w-full flex-col items-center bg-transparent px-4 pb-24 text-white md:px-12"
-    >
-      <div class="mx-auto w-full max-w-[1400px]">
-        <div
-          class="group relative mb-16 aspect-[16/9] w-full overflow-hidden shadow-2xl md:mb-24 md:aspect-[21/9]"
-        >
-          <img
-            alt="Sophisticated modern interior"
-            class="size-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoVBaduTthYn6C2YPIVRwrZwRuKG3tzUuRIYFzYBuvvPTxqM_il0m-EH2RzgcROCAo1mK-Yi59gin9gkYD7pVwpw3lAFeLOranQxuXjxIAhhhcmdWcDDTuYKgZno4KOuS1n3c0V9Mcj2AdxygULMc5sdtIYHEVkiblrpZqiOWEDygNng740wBzcwEH8SedHSNvbVoC_2c32ujosc6wBoYK67MqOtWtLHJAdvTn4qGBIka5gFplafamwy6tbYTUMb34WENLjhhxKAs"
-          />
-        </div>
-        <div class="mx-auto w-full max-w-4xl text-center md:text-left">
-          <h2
-            class="font-serif text-3xl leading-tight text-white/95 md:text-5xl lg:text-6xl"
-          >
-            We are on a mission to challenge the status quo... to an interior
-            experience that speaks to the soul.
-          </h2>
-        </div>
-      </div>
-    </section>
+    <Hero />
 
     <AboutSection />
 

@@ -1,114 +1,57 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+// On récupère les données depuis Keystatic
+const legalEntry = await getEntry("legal", "data");
+const { Content } = legalEntry
+  ? await legalEntry.render()
+  : { Content: () => null };
+
+// On récupère les titres (avec des valeurs par défaut si vide)
+const surtitle = legalEntry?.data.surtitle || "Informations légales";
+const title = legalEntry?.data.title || "Mentions Légales";
+const titleAccent = legalEntry?.data.titleAccent || "& Confidentialité";
 ---
 
-<Layout title="Taaral Intérieur - Mentions Légales & Confidentialité">
+<Layout title={`Taaral - ${title}`}>
   <section
     class="min-h-screen w-full bg-transparent px-4 pb-32 pt-40 text-black md:px-12 md:pt-48"
   >
     <div class="mx-auto max-w-4xl">
+      {/* 1. L'EN-TÊTE GÉRÉ PAR KEYSTATIC */}
       <div class="mb-16 md:mb-24">
         <span
           class="mb-6 block text-[10px] font-bold uppercase tracking-[0.2em] text-[#C06C61]"
-          >Informations légales</span
         >
+          {surtitle}
+        </span>
         <h1 class="font-display text-5xl leading-tight text-black md:text-7xl">
-          Mentions Légales <br /><span class="font-light italic text-[#C06C61]"
-            >& Confidentialité</span
-          >
+          {title}
+          <br />
+          <span class="font-light italic text-[#C06C61]">{titleAccent}</span>
         </h1>
       </div>
 
+      {/* 2. LE CONTENU MARKDOWN STYLISÉ COMME TON DESIGN */}
+      {
+        /* Les classes "prose" forcent le HTML de Keystatic à utiliser tes styles exacts */
+      }
       <div
-        class="space-y-16 text-sm font-light leading-relaxed text-white md:text-base"
+        class="prose max-w-none
+               prose-headings:font-display prose-headings:font-normal prose-headings:text-black
+               prose-h2:mb-6 prose-h2:mt-16 prose-h2:text-3xl prose-p:text-sm
+               prose-p:font-light prose-p:leading-relaxed prose-p:text-black prose-a:text-[#C06C61] prose-a:no-underline
+               prose-a:transition-opacity hover:prose-a:opacity-70 prose-strong:font-bold prose-strong:text-black
+               md:prose-h2:text-4xl md:prose-p:text-base"
       >
-        <div class="space-y-4">
-          <h2 class="mb-6 font-display text-3xl text-black md:text-4xl">
-            1. Éditeur du site
-          </h2>
-          <p>
-            Le site <strong>Taaral Intérieur</strong> est édité par :<br />
-            [Nom de la société ou Prénom Nom de ta cliente]<br />
-            [Adresse postale du studio]<br />
-            SIRET : [Numéro de SIRET]<br />
-            Directeur de la publication : [Prénom Nom de ta cliente]
-          </p>
-          <p>
-            Contact : <a
-              href="mailto:hello@taaral.com"
-              class="text-[#C06C61] transition-opacity hover:opacity-70"
-              >hello@taaral.com</a
-            >
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          <h2 class="mb-6 font-display text-3xl text-black md:text-4xl">
-            2. Hébergement
-          </h2>
-          <p>
-            Ce site est hébergé par la société <strong>Netlify, Inc.</strong><br
-            />
-            44 Montgomery Street, Suite 300, San Francisco, California 94104, USA.<br
-            />
-            Site web : <a
-              href="https://www.netlify.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-[#C06C61] transition-opacity hover:opacity-70"
-              >netlify.com</a
-            >
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          <h2 class="mb-6 font-display text-3xl text-black md:text-4xl">
-            3. Propriété intellectuelle
-          </h2>
-          <p>
-            L'ensemble de ce site relève de la législation française et
-            internationale sur le droit d'auteur et la propriété intellectuelle.
-            Tous les droits de reproduction sont réservés, y compris pour les
-            documents téléchargeables et les représentations iconographiques et
-            photographiques.
-          </p>
-          <p>
-            La reproduction de tout ou partie de ce site sur un support
-            électronique quel qu'il soit est formellement interdite sauf
-            autorisation expresse du directeur de la publication. Les
-            photographies des projets présentés sont la propriété exclusive de
-            Taaral Intérieur ou de leurs photographes respectifs.
-          </p>
-        </div>
-
-        <div class="space-y-4">
-          <h2 class="mb-6 font-display text-3xl text-black md:text-4xl">
-            4. Données personnelles (RGPD)
-          </h2>
-          <p>
-            D'une façon générale, vous pouvez visiter notre site sur Internet
-            sans avoir à décliner votre identité et à fournir des informations
-            personnelles vous concernant.
-          </p>
-          <p>
-            Cependant, lorsque vous utilisez notre <strong
-              >formulaire de contact</strong
-            >, nous recueillons les données suivantes : nom, adresse e-mail et
-            détails du projet. Ces informations sont exclusivement utilisées
-            dans le but de répondre à votre demande et de gérer la relation
-            commerciale qui peut en découler. Elles ne sont en aucun cas vendues
-            ou cédées à des tiers.
-          </p>
-          <p>
-            Conformément à la loi « informatique et libertés », vous pouvez
-            exercer votre droit d'accès aux données vous concernant et les faire
-            rectifier ou supprimer en contactant : <a
-              href="mailto:hello@taaral.com"
-              class="text-[#C06C61] transition-opacity hover:opacity-70"
-              >hello@taaral.com</a
-            >.
-          </p>
-        </div>
+        {
+          legalEntry ? (
+            <Content />
+          ) : (
+            <p>Veuillez rédiger ce contenu dans Keystatic.</p>
+          )
+        }
       </div>
     </div>
   </section>

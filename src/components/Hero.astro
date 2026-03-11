@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+
+// On va chercher les données du Hero
+const heroEntry = await getEntry("hero", "data");
+// Si l'entrée n'existe pas encore dans Keystatic, on met des valeurs par défaut pour éviter un crash
+const headline =
+  heroEntry?.data.headline ||
+  "We are on a mission to challenge the status quo...";
+
+const rawImagePath = heroEntry?.data.backgroundImage;
+
+// 2. MAGIE ASTRO : On charge virtuellement toutes les images du dossier
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/hero/*.{jpeg,jpg,png,gif,webp}",
+);
+
+// 3. On nettoie le chemin fourni par Keystatic pour qu'il corresponde
+// Il passe de "../../assets/images/hero/mon-image.png" à "/src/assets/images/hero/mon-image.png"
+const validImagePath = rawImagePath
+  ? rawImagePath.replace("../../assets", "/src/assets")
+  : null;
+
+// 4. On vérifie que l'image existe bien dans le dossier
+const imageExists = validImagePath && images[validImagePath];
+---
+
+<section
+  data-bg="bg-secondary-dark"
+  class="flex w-full flex-col items-center bg-transparent px-4 pb-24 text-white md:px-12"
+>
+  <div class="mx-auto w-full max-w-[1400px]">
+    <div
+      class="group relative mb-16 aspect-[16/9] w-full overflow-hidden shadow-2xl md:mb-24 md:aspect-[21/9]"
+    >
+      {
+        imageExists && (
+          <Image
+            src={images[validImagePath]()}
+            alt="Hero image"
+            class="absolute inset-0 size-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+            loading="eager"
+            fetchpriority="high"
+          />
+        )
+      }
+    </div>
+    <div class="mx-auto w-full max-w-4xl text-center md:text-left">
+      <h2
+        class="font-serif text-3xl leading-tight text-white/95 md:text-5xl lg:text-6xl"
+      >
+        {headline}
+      </h2>
+    </div>
+  </div>
+</section>
