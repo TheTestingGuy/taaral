@@ -111,5 +111,29 @@ export default config({
         }),
       },
     }),
+
+    // LE FOOTER
+    footer: singleton({
+      label: 'Pied de page (Footer)',
+      path: 'src/content/footer/data',
+      format: { data: 'json' }, // JSON car on n'a pas besoin de Markdown ici
+      schema: {
+        description: fields.text({
+          label: 'Petite phrase de description',
+          multiline: true,
+          defaultValue: 'Designing spaces that breathe culture, sophistication, and timeless elegance.'
+        }),
+        socials: fields.array(
+          fields.object({
+            label: fields.text({ label: 'Nom du réseau (ex: Instagram)' }),
+            url: fields.text({ label: 'Lien (ex: https://instagram.com/...)' })
+          }),
+          {
+            label: 'Réseaux Sociaux',
+            itemLabel: props => props.fields.label.value || 'Nouveau lien',
+          }
+        ),
+      },
+    }),
   },
 });

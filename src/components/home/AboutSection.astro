@@ -8,32 +8,18 @@ const { Content } = aboutEntry
   ? await aboutEntry.render()
   : { Content: () => null };
 
-// 2. Variables avec valeurs par défaut (fallback)
-const data = aboutEntry?.data || {};
-const caption = data.caption || "Est. 2014 — Paris, France";
-const surtitle = data.surtitle || "About Us";
 // On remplace les sauts de ligne tapés par la cliente par des vraies balises <br/>
-const headline = data.headline
-  ? data.headline.replace(/\n/g, "<br />")
+const headline = aboutEntry?.data.headline
+  ? aboutEntry?.data.headline.replace(/\n/g, "<br />")
   : "to challenge the<br />status quo...";
-const architectRole = data.architectRole || "Lead Architect";
-const architectName = data.architectName || "Isabella Rossi";
 
-// 3. Gestion de l'image (Astuce Astro Assets)
-const rawImagePath = data.image;
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/images/about/*.{jpeg,jpg,png,gif,webp}",
-);
-const validImagePath = rawImagePath
-  ? rawImagePath.replace("../../assets", "/src/assets")
-  : null;
-const imageExists = validImagePath && images[validImagePath];
+const architectName = aboutEntry?.data.architectName || "Clara Lepeytre";
 ---
 
 <section
   id="about"
   data-bg="bg-primary"
-  class="w-full bg-transparent px-4 py-24 text-black md:px-12 md:py-32"
+  class="w-full bg-transparent px-4 py-24 text-black md:px-12 md:py-80"
 >
   <div
     class="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-16 md:grid-cols-2 md:gap-24"
@@ -42,9 +28,9 @@ const imageExists = validImagePath && images[validImagePath];
     <div class="flex flex-col gap-6">
       <div class="aspect-square w-full max-w-md overflow-hidden bg-gray-100">
         {
-          imageExists ? (
+          aboutEntry?.data.image ? (
             <Image
-              src={images[validImagePath]()}
+              src={aboutEntry.data.image}
               alt={architectName}
               class="size-full object-cover"
             />
@@ -58,7 +44,7 @@ const imageExists = validImagePath && images[validImagePath];
       <p
         class="font-sans text-[9px] uppercase tracking-[0.2em] text-gray-400 md:text-[10px]"
       >
-        {caption}
+        {aboutEntry?.data.caption || "Est. 2014 — Paris, France"}
       </p>
     </div>
 
@@ -67,7 +53,7 @@ const imageExists = validImagePath && images[validImagePath];
       <span
         class="mb-6 text-[9px] font-bold uppercase tracking-[0.2em] text-[#C06C61] md:text-[10px]"
       >
-        {surtitle}
+        {aboutEntry?.data.surtitle || "About Us"}
       </span>
 
       {
@@ -99,7 +85,7 @@ const imageExists = validImagePath && images[validImagePath];
           <span
             class="mb-2 block text-[9px] uppercase tracking-widest text-gray-400 md:text-[10px]"
           >
-            {architectRole}
+            {aboutEntry?.data.architectRole || "Lead Architect"}
           </span>
           <span class="font-display text-2xl italic text-black">
             {architectName}

@@ -13,17 +13,17 @@ const projectsCollection = defineCollection({
 
 const heroCollection = defineCollection({
   type: 'data',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     headline: z.string(),
-    backgroundImage: z.string(),
+    backgroundImage: image(),
   }),
 });
 
 // About et Legal sont de type 'content' (Markdown)
 const aboutCollection = defineCollection({
   type: 'content',
-  schema: z.object({
-    image: z.string().optional(),
+  schema: ({ image }) => z.object({
+    image: image(),
     caption: z.string().optional(),
     surtitle: z.string().optional(),
     headline: z.string().optional(),
@@ -41,9 +41,23 @@ const legalCollection = defineCollection({
   }),
 });
 
+const footerCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    description: z.string().optional(),
+    socials: z.array(
+      z.object({
+        label: z.string(),
+        url: z.string(),
+      })
+    ).optional(),
+  }),
+});
+
 export const collections = {
   projects: projectsCollection,
   hero: heroCollection,
   about: aboutCollection,
   legal: legalCollection,
+  footer: footerCollection,
 };

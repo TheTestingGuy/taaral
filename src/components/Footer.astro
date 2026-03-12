@@ -1,5 +1,13 @@
 ---
+import { getEntry } from "astro:content";
 
+const footerEntry = await getEntry("footer", "data");
+const data = footerEntry?.data || {};
+
+const description =
+  data.description ||
+  "Designing spaces that breathe culture, sophistication, and timeless elegance.";
+const socials = data.socials || [];
 ---
 
 <footer
@@ -7,6 +15,7 @@
 >
   <div class="mx-auto max-w-[1920px]">
     <div class="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-8">
+      {/* Colonne Gauche : Description & Réseaux */}
       <div class="flex flex-col md:col-span-6 lg:col-span-5">
         <div class="mb-6 flex items-center gap-3 text-white">
           <span class="font-logo text-sm tracking-widest md:text-base">
@@ -14,20 +23,33 @@
           </span>
         </div>
 
+        {/* La description dynamique */}
         <p
           class="mb-8 max-w-sm text-sm leading-relaxed text-white/60 md:text-base"
         >
-          Designing spaces that breathe culture, sophistication, and timeless
-          elegance.
+          {description}
         </p>
 
-        <div class="flex items-center gap-6 text-sm">
-          <a href="#" class="transition-colors hover:text-white">Instagram</a>
-          <a href="#" class="transition-colors hover:text-white">Pinterest</a>
-          <a href="#" class="transition-colors hover:text-white">LinkedIn</a>
+        {/* La liste dynamique des réseaux sociaux */}
+        <div class="flex flex-wrap items-center gap-6 text-sm">
+          {
+            socials.map((social) => (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="transition-colors hover:text-white"
+              >
+                {social.label}
+              </a>
+            ))
+          }
         </div>
       </div>
 
+      {
+        /* Colonne Droite : Liens internes (On les laisse statiques car ils pointent vers l'architecture de ton site) */
+      }
       <div
         class="grid grid-cols-2 gap-8 md:col-span-6 lg:col-span-4 lg:col-start-9"
       >
@@ -35,22 +57,17 @@
           <h4
             class="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-white"
           >
-            Explore
+            Explorer
           </h4>
           <a
             href="/projects"
             class="text-sm text-white/60 transition-colors hover:text-white"
-            >Projects</a
+            >Projets</a
           >
           <a
             href="/#about"
             class="text-sm text-white/60 transition-colors hover:text-white"
-            >Philosophy</a
-          >
-          <a
-            href="/#about"
-            class="text-sm text-white/60 transition-colors hover:text-white"
-            >About Taaral</a
+            >À propos</a
           >
           <a
             href="/#contact"
@@ -74,11 +91,11 @@
       </div>
     </div>
 
+    {/* Copyright */}
     <div
       class="mt-16 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 md:mt-24 md:flex-row md:items-center"
     >
       <p>© {new Date().getFullYear()} Taaral Intérieur. All rights reserved.</p>
-      <p>Designed with passion.</p>
     </div>
   </div>
 </footer>
