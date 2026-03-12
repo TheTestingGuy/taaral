@@ -31,6 +31,10 @@
       class="mt-4 flex flex-col gap-8 md:mt-0"
     >
       {
+        /* 🚨 LE FIX EST ICI : Ce champ caché force Netlify à détecter le formulaire 🚨 */
+      }
+      <input type="hidden" name="form-name" value="contact" />
+      {
         /* Champ caché anti-spam (Honeypot) : Netlify bloque les robots qui le remplissent */
       }
       <p class="hidden">
