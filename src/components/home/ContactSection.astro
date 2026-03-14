@@ -4,7 +4,7 @@
 
 <section
   id="contact"
-  class="mx-auto mb-24 w-full max-w-5xl border-t border-primary/20 pt-16 md:mb-32 md:pt-80"
+  class="mx-auto mb-24 w-full max-w-5xl border-t border-primary/20 px-4 pt-16 md:mb-32 md:pt-80"
 >
   <div class="grid grid-cols-1 gap-16 md:grid-cols-2">
     <div>
@@ -17,9 +17,9 @@
       </p>
       <p class="mb-2 text-sm uppercase tracking-widest opacity-60">Email</p>
       <a
-        href="mailto:hello@taaral.com"
+        href="mailto:taaralinterieur@gmail.com"
         class="font-display text-2xl transition-colors hover:text-accent"
-        >hello@taaral.com</a
+        >taaralinterieur@gmail.com</a
       >
     </div>
 
@@ -54,7 +54,7 @@
           id="name"
           name="name"
           required
-          class="border-0 border-b border-primary/30 bg-transparent px-0 py-2 text-primary transition-colors focus:border-accent focus:outline-none focus:ring-0"
+          class="border-0 border-b border-primary/30 bg-transparent px-1 py-2 text-primary transition-colors focus:border-accent focus:outline-none focus:ring-0"
         />
       </div>
 
@@ -67,7 +67,7 @@
           id="email"
           name="email"
           required
-          class="border-0 border-b border-primary/30 bg-transparent px-0 py-2 text-primary transition-colors focus:border-accent focus:outline-none focus:ring-0"
+          class="border-0 border-b border-primary/30 bg-transparent px-1 py-2 text-primary transition-colors focus:border-accent focus:outline-none focus:ring-0"
         />
       </div>
 
@@ -82,7 +82,7 @@
           name="message"
           rows="4"
           required
-          class="resize-none border-0 border-b border-primary/30 bg-transparent px-0 py-2 text-primary transition-colors focus:border-accent focus:outline-none focus:ring-0"
+          class="resize-none border-0 border-b border-primary/30 bg-transparent px-1 py-2 text-primary transition-colors focus:border-accent focus:outline-none focus:ring-0"
         ></textarea>
       </div>
 
@@ -99,3 +99,22 @@
     </form>
   </div>
 </section>
+
+<style is:global>
+  /* Cible les champs pré-remplis par le navigateur (Chrome, Safari, Edge) */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    /* 1. On crée une ombre interne géante de la même couleur que ton fond bordeaux */
+    -webkit-box-shadow: 0 0 0px 1000px #351419 inset !important;
+
+    /* 2. On force le texte à rester blanc (ou la couleur que tu veux) */
+    -webkit-text-fill-color: white !important;
+
+    /* 3. On enlève le contour par défaut */
+    transition: background-color 5000s ease-in-out 0s;
+  }
+</style>

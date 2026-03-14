@@ -1,0 +1,131 @@
+{
+  "title": "Prestations en décoration & architecture d'intérieur",
+  "subtitle": "Devis personnalisé offert",
+  "categories": [
+    {
+      "name": "Particuliers",
+      "packages": [
+        {
+          "name": "1. Aménagement de la pièce de votre choix (Intérieur ou extérieur)",
+          "price": "À partir de 380€",
+          "features": [
+            "Conseils ciblés pour sublimer une pièce",
+            "Idéal pour un coup de frais ou une optimisation",
+            "Un rendu 3D"
+          ]
+        },
+        {
+          "name": "2. Aménagement complet",
+          "price": "Sur dossier",
+          "features": [
+            "Reconfiguration d'un espace choisi avec réflexion fonctionnelle et esthétique",
+            "Dossier de références et d'inspiration",
+            "Réalisation d'une vue 3D"
+          ]
+        },
+        {
+          "name": "3. Dossier Archi-Déco",
+          "price": "À partir de 950€ / 1900€",
+          "features": [
+            "Une proposition d'aménagements",
+            "Plan 3D + plan de sol",
+            "Mood board complet",
+            "Photos réalistes de chaque pièce"
+          ]
+        },
+        {
+          "name": "4. Dossier Premium Complet",
+          "price": "À partir de 3000€",
+          "features": [
+            "Vidéo immersive",
+            "Sourcing mobilier",
+            "Conseils matériaux",
+            "Prise de RDV sur site avec artisans",
+            "Accompagnement client de A à Z"
+          ]
+        }
+      ],
+      "optionsTitle": "Options & Offres de bienvenue",
+      "options": [
+        {
+          "name": "Plan 2D",
+          "price": "450 €"
+        },
+        {
+          "name": "Vidéo immersive",
+          "price": "500 €"
+        },
+        {
+          "name": "Image photoréaliste",
+          "price": "450 €"
+        },
+        {
+          "name": "Cadeau 1er client : Séance photo, Coaching déco OU Vidéo immersive",
+          "price": "Offert"
+        }
+      ]
+    },
+    {
+      "name": "Professionnels",
+      "packages": [
+        {
+          "name": "1. Dossier Essentiel Pro",
+          "price": "À partir de 2000€",
+          "features": [
+            "Aménagement adapté aux flux publics",
+            "Mood board",
+            "Plan 3D",
+            "4 photos réalistes"
+          ]
+        },
+        {
+          "name": "2. Dossier Complet Pro",
+          "price": "À partir de 3300 €",
+          "features": [
+            "Aménagements proposés",
+            "Mood boards spécifiques",
+            "Sourcing mobilier",
+            "Plans 3D",
+            "6 photos réalistes et +",
+            "Plan 2D (sol)",
+            "Vidéo immersive 3D",
+            "Rendez-vous sur site et accompagnement projet",
+            "Shooting photo du projet final"
+          ]
+        }
+      ],
+      "optionsTitle": "Options à la carte & Cadeau Pro",
+      "options": [
+        {
+          "name": "Plan de scénographie vitrine",
+          "price": "400 €"
+        },
+        {
+          "name": "Création d'un logo",
+          "price": "500 €"
+        },
+        {
+          "name": "Dossier création logo + mock-up",
+          "price": "850 €"
+        },
+        {
+          "name": "Shooting photo (15 photos)",
+          "price": "650 €"
+        },
+        {
+          "name": "Vidéo immersive 3D",
+          "price": "500 €"
+        },
+        {
+          "name": "Vidéo commerce (montage photo + vidéo réseaux)",
+          "price": "850 €"
+        },
+        {
+          "name": "Cadeau de bienvenue : Séance photo, Vidéo 3D OU Création logo",
+          "price": "Offert"
+        }
+      ]
+    }
+  ],
+  "disclaimer": "Tous les tarifs sont donnés à titre indicatif. Ils peuvent varier selon la surface (m2) du projet. Les frais kilométriques et de déplacement peuvent s'ajouter au tarif du projet, selon la localisation et la nature de la demande. Ils peuvent néanmoins être inclus dans le devis, au cas par cas."
+}

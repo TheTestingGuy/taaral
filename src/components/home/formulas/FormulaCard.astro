@@ -1,0 +1,47 @@
+---
+const { packageItem, index } = Astro.props;
+---
+
+<div
+  class="group flex flex-col border-t border-primary pt-8 transition-colors hover:border-accent"
+>
+  {/* Le Numéro (01, 02, etc.) */}
+  <span
+    class="mb-8 font-display text-4xl text-primary transition-colors group-hover:text-[#C06C61]"
+  >
+    {String(index + 1).padStart(2, "0")}
+  </span>
+
+  {/* Nom et Prix */}
+  <h3 class="mb-4 font-display text-3xl text-primary md:text-4xl">
+    {packageItem.name}
+  </h3>
+  <span
+    class="mb-6 block font-sans text-[10px] uppercase tracking-widest text-accent"
+  >
+    {packageItem.price}
+  </span>
+
+  {/* Description */}
+  <p
+    class="mb-8 h-auto text-sm font-light leading-relaxed text-primary lg:h-20"
+  >
+    {packageItem.description}
+  </p>
+
+  {/* Liste des inclusions */}
+  {
+    packageItem.features && packageItem.features.length > 0 && (
+      <ul class="mt-auto flex flex-col gap-3 border-t border-gray-100 pt-8">
+        {packageItem.features.map((feature: string) => (
+          <li class="flex items-start gap-3 text-sm font-light text-primary">
+            <span class="material-symbols-outlined mt-[2px] text-base text-accent">
+              check
+            </span>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>

@@ -3,6 +3,7 @@
 import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import ProjectsHero from "@components/ProjectsHero.astro";
 
 // 1. On récupère tous les projets et on les trie par 'order'
 const allProjects = await getCollection("projects");
@@ -20,22 +21,7 @@ const cardStyles = [
 
 <Layout title="Material Creative - Projects">
   <div class="mx-auto w-full max-w-[1920px] px-4 pb-20 md:px-8 lg:px-16">
-    <section class="fade-in-up mx-auto mb-24 max-w-4xl text-center md:mb-32">
-      <div
-        class="relative mb-12 aspect-[16/10] w-full overflow-hidden rounded shadow-2xl"
-      >
-        <img
-          alt="Elegant modern office interior"
-          class="size-full object-cover transition-transform duration-[1.5s] ease-out hover:scale-105"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfSKqQ-I5u3snz9wqpBAT4TX5FNilIUdoTcF6C2GTVMuAxXvaRzDZj-VRvoLFVyo33ENPae2DGOrk4Orj52cZ89sonMfAGuEbZFoP2Qf02thNQZ9pipHcdkdla0rpYQ7yL75-5vus5-UODqExP0PgcoNkxrBEi5ssZi35_aNNoX9pzqzDNrtVVkWxfTdCE_AuUmsQNES2XonjVEtyfxbmfYrKCEULWqHCcex9ErUl_B5eamBA1WGXCEuGChIFD2Uq8GWXYYUoSGGY"
-        />
-      </div>
-      <h2
-        class="mx-auto mb-8 max-w-3xl font-display text-3xl leading-tight text-primary-projects opacity-90 md:text-5xl md:leading-snug lg:text-6xl"
-      >
-        We are on a mission to challenge the status quo...
-      </h2>
-    </section>
+    <ProjectsHero />
 
     <section
       class="grid grid-cols-1 items-start gap-x-8 gap-y-16 md:grid-cols-12 md:gap-x-12"

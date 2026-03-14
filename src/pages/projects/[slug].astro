@@ -32,7 +32,7 @@ const gallery = project.data.gallery || [];
 
 <Layout title={`Taaral - ${project.data.title}`}>
   {/* EN-TÊTE DU PROJET */}
-  <section class="bg-transparent px-4 pb-16 pt-40 text-black md:px-12 md:pt-48">
+  <section class="bg-transparent px-4 pb-16 text-primary-dark md:px-12">
     <div class="mx-auto max-w-[1920px]">
       <h1 class="mb-6 font-display text-5xl md:text-7xl lg:text-8xl">
         {project.data.title}
@@ -60,7 +60,7 @@ const gallery = project.data.gallery || [];
   {/* DESCRIPTION DU PROJET */}
   <section class="mb-32 w-full px-4 md:px-12">
     <div
-      class="prose prose-gray mx-auto max-w-3xl prose-p:text-lg prose-p:font-light prose-p:leading-relaxed prose-p:text-gray-600"
+      class="prose prose-gray mx-auto max-w-3xl prose-p:text-lg prose-p:font-light prose-p:leading-relaxed prose-p:text-primary"
     >
       <Content />
     </div>
@@ -68,10 +68,10 @@ const gallery = project.data.gallery || [];
 
   {/* LA FAMEUSE GALERIE PHOTOS */}
   {
-    gallery.length > 0 && (
+    gallery.length > 0 ? (
       <section class="w-full px-4 pb-32 md:px-12">
         <div class="mx-auto max-w-[1920px]">
-          <h2 class="mb-12 border-b border-gray-200 pb-4 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-black">
+          <h2 class="mb-12 border-b border-accent pb-4 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-accent">
             Project Gallery
           </h2>
 
@@ -91,6 +91,17 @@ const gallery = project.data.gallery || [];
           </div>
         </div>
       </section>
+    ) : (
+      <section class="w-full px-4 pb-32 md:px-12">
+        <div class="flex w-full flex-col items-center justify-center border border-dashed border-gray-300 py-32 text-center">
+          <span class="material-symbols-outlined mb-4 text-4xl text-gray-300">
+            photo_camera
+          </span>
+          <p class="font-sans text-[10px] uppercase tracking-[0.2em] text-gray-400 md:text-xs">
+            D'autres photos de ce projet seront bientôt disponibles
+          </p>
+        </div>
+      </section>
     )
   }
 
@@ -103,12 +114,12 @@ const gallery = project.data.gallery || [];
           {prevProject && (
             <a
               href={`/projects/${prevProject.slug}`}
-              class={`group flex w-full flex-col items-start bg-transparent p-8 text-black transition-colors hover:bg-[#351419] hover:text-white md:p-16 ${nextProject ? "md:w-1/2" : ""}`}
+              class={`group flex w-full flex-col items-start bg-transparent p-8 transition-colors hover:bg-primary-dark hover:text-white md:p-16 ${nextProject ? "md:w-1/2" : ""}`}
             >
-              <span class="mb-4 text-[10px] uppercase tracking-widest text-gray-400 transition-colors group-hover:text-white/70">
+              <span class="mb-4 text-[10px] uppercase tracking-widest text-primary transition-colors group-hover:text-primary/90">
                 Previous Project
               </span>
-              <span class="font-display text-3xl transition-colors group-hover:text-[#C06C61] md:text-5xl">
+              <span class="font-display text-3xl text-primary-dark transition-colors group-hover:text-accent md:text-5xl">
                 {prevProject.data.title}
               </span>
             </a>
@@ -118,12 +129,12 @@ const gallery = project.data.gallery || [];
           {nextProject && (
             <a
               href={`/projects/${nextProject.slug}`}
-              class={`group flex w-full flex-col items-end bg-transparent p-8 text-right text-black transition-colors hover:bg-[#351419] hover:text-white md:p-16 ${prevProject ? "md:w-1/2" : ""}`}
+              class={`group flex w-full flex-col items-end bg-transparent p-8 text-right transition-colors hover:bg-primary-dark hover:text-white md:p-16 ${prevProject ? "md:w-1/2" : ""}`}
             >
-              <span class="mb-4 text-[10px] uppercase tracking-widest text-gray-400 transition-colors group-hover:text-white/70">
+              <span class="mb-4 text-[10px] uppercase tracking-widest text-primary transition-colors group-hover:text-primary/90">
                 Next Project
               </span>
-              <span class="font-display text-3xl transition-colors group-hover:text-[#C06C61] md:text-5xl">
+              <span class="font-display text-3xl text-primary-dark transition-colors group-hover:text-accent md:text-5xl">
                 {nextProject.data.title}
               </span>
             </a>

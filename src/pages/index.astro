@@ -1,14 +1,15 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Hero from "@components/Hero.astro";
+import HeroSection from "@components/home/HeroSection.astro";
 import AboutSection from "@components/home/AboutSection.astro";
 import ProjectPreviewSection from "@components/home/ProjectPreviewSection.astro";
 import ContactSection from "@components/home/ContactSection.astro";
+import FormulasSection from "@components/home/formulas/Section.astro";
 ---
 
 <Layout title="Taaral intérieur - Accueil">
   <div class="flex min-h-screen flex-col font-body">
-    <Hero />
+    <HeroSection />
 
     <AboutSection />
 
@@ -17,6 +18,9 @@ import ContactSection from "@components/home/ContactSection.astro";
       class="w-full bg-transparent pt-24 text-white"
     >
       <ProjectPreviewSection />
+
+      <FormulasSection />
+
       <ContactSection />
     </section>
   </div>

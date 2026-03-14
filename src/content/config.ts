@@ -16,6 +16,16 @@ const heroCollection = defineCollection({
   schema: ({ image }) => z.object({
     headline: z.string(),
     backgroundImage: image(),
+    backgroundVideo: z.string().optional(),
+  }),
+});
+
+const projectsPageCollection = defineCollection({
+  type: 'data',
+  schema: ({ image }) => z.object({
+    headline: z.string(),
+    backgroundImage: image(),
+    backgroundVideo: z.string().optional(),
   }),
 });
 
@@ -29,6 +39,34 @@ const aboutCollection = defineCollection({
     headline: z.string().optional(),
     architectRole: z.string().optional(),
     architectName: z.string().optional(),
+  }),
+});
+
+const formulasCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string().optional(),
+    subtitle: z.string().optional(),
+    categories: z.array(
+      z.object({
+        name: z.string(),
+        packages: z.array(
+          z.object({
+            name: z.string(),
+            price: z.string(),
+            features: z.array(z.string()),
+          })
+        ).optional(),
+        optionsTitle: z.string().optional(),
+        options: z.array(
+          z.object({
+            name: z.string(),
+            price: z.string(),
+          })
+        ).optional(),
+      })
+    ).optional(),
+    disclaimer: z.string().optional(),
   }),
 });
 
@@ -57,7 +95,9 @@ const footerCollection = defineCollection({
 export const collections = {
   projects: projectsCollection,
   hero: heroCollection,
+  "projects-page": projectsPageCollection,
   about: aboutCollection,
   legal: legalCollection,
   footer: footerCollection,
+  formulas: formulasCollection,
 };

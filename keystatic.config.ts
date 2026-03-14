@@ -62,8 +62,41 @@ export default config({
           directory: 'src/assets/images/hero',
           publicPath: '../../assets/images/hero/',
         }),
+        backgroundVideo: fields.file({
+          label: 'Vidéo de Fond (Optionnelle - Remplace l\'image)',
+          description: 'Uploadez un fichier .mp4. S\'il est présent, il remplacera l\'image de fond.',
+          // On le met dans public/ car Astro n'a pas besoin de le compiler
+          directory: 'public/videos/hero',
+          publicPath: '/videos/hero/',
+        }),
       },
     }),
+
+    "projects-page": singleton({
+      label: 'Page principal des projets',
+      path: 'src/content/projects-page/data',
+      format: { data: 'json' },
+      schema: {
+        headline: fields.text({
+          label: 'Texte Principal',
+          multiline: true,
+          defaultValue: 'We are on a mission to challenge the status quo... to an interior experience that speaks to the soul.'
+        }),
+        backgroundImage: fields.image({
+          label: 'Image de Fond',
+          directory: 'src/assets/images/projects-page',
+          publicPath: '../../assets/images/projects-page/',
+        }),
+        backgroundVideo: fields.file({
+          label: 'Vidéo de Fond (Optionnelle - Remplace l\'image)',
+          description: 'Uploadez un fichier .mp4. S\'il est présent, il remplacera l\'image de fond.',
+          // On le met dans public/ car Astro n'a pas besoin de le compiler
+          directory: 'public/videos/projects-page',
+          publicPath: '/videos/projects-page/',
+        }),
+      },
+    }),
+
 
     about: singleton({
       label: 'Section À Propos',
@@ -93,6 +126,55 @@ export default config({
         // Le bloc signature en bas
         architectRole: fields.text({ label: 'Rôle (ex: Lead Architect)', defaultValue: 'Lead Architect' }),
         architectName: fields.text({ label: 'Nom de l\'architecte', defaultValue: 'Isabella Rossi' }),
+      },
+    }),
+
+    // LA SECTION FORMULES / SERVICES
+    formulas: singleton({
+      label: 'Section Formules (Accueil)',
+      path: 'src/content/formulas/data',
+      format: { data: 'json' },
+      schema: {
+        title: fields.text({ label: 'Titre de la section', defaultValue: 'Nos Prestations' }),
+        subtitle: fields.text({ label: 'Sous-titre', defaultValue: 'Décoration & architecture d\'intérieur' }),
+
+        // NOUVEAU : Un tableau de Catégories (Particuliers, Professionnels)
+        categories: fields.array(
+          fields.object({
+            name: fields.text({ label: 'Nom de la cible (ex: Particuliers, Professionnels)' }),
+
+            // Les formules de cette catégorie
+            packages: fields.array(
+              fields.object({
+                name: fields.text({ label: 'Nom de la formule' }),
+                price: fields.text({ label: 'Prix (ex: À partir de 380€)' }),
+                features: fields.array(
+                  fields.text({ label: 'Inclusion' }),
+                  { label: 'Ce qui est inclus', itemLabel: props => props.value || 'Nouvel élément' }
+                ),
+              }),
+              { label: 'Les Formules', itemLabel: props => props.fields.name.value || 'Nouvelle formule' }
+            ),
+
+            // Les options supplémentaires
+            optionsTitle: fields.text({ label: 'Titre des options', defaultValue: 'Options supplémentaires' }),
+            options: fields.array(
+              fields.object({
+                name: fields.text({ label: 'Nom de l\'option' }),
+                price: fields.text({ label: 'Prix (ex: 450€)' }),
+              }),
+              { label: 'Options à la carte', itemLabel: props => props.fields.name.value || 'Nouvelle option' }
+            ),
+          }),
+          { label: 'Catégories de clients', itemLabel: props => props.fields.name.value || 'Nouvelle catégorie' }
+        ),
+
+        // Mention légale pour les prix
+        disclaimer: fields.text({
+          label: 'Mention légale (bas de page)',
+          multiline: true,
+          defaultValue: "Tous les tarifs sont donnés à titre indicatif. Ils peuvent varier selon la surface (m2) du projet..."
+        }),
       },
     }),
 

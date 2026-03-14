@@ -7,6 +7,7 @@ export default {
     extend: {
       colors: {
         primary: "#EAE0D5", // Crème (Home)
+        "primary-dark": "#351419",
         "primary-about": "#AE5E4C", // Terracotta (About)
         "primary-projects": "#E8CBB8", // Beige clair (Projects)
         "background-light": "#4F1D1F",
